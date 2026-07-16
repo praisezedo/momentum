@@ -9,7 +9,7 @@ export default function Home() {
             <h1 className="text-7xl font-bold text-blue-900">
              Build Momentum EveryDay
            </h1>
-           <p className="px-20 w-70 sm:min-w-150 text-bold text-blue-900">
+           <p className="px-20 w-70 sm:min-w-150 font-bold text-blue-900">
                 Turn your goals into daily progress.
                 Track projects, learning and habits
                 without losing momentum.
