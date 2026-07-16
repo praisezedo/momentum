@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-const points: string[] = ["Track Projects" , "Learn Daily" , "Build Habit" , "Achieve Goal"];
+import { points } from "../data/features";
+import type { Feature } from "../types/features";
 
 export default function Vision() {
     return (
@@ -11,8 +12,8 @@ export default function Vision() {
             </div>
 
             <ul className="grid grid-cols-2 gap-7 my-5 ">
-                {points.map((point: string , index: number) => {
-                     return <li key={index} className="font-bold text-blue-900 text-2xl">✓ {point}</li>
+                {points.map((point: Feature) => {
+                     return <li key={point.id} className="font-bold text-blue-900 text-2xl">✓ {point.title}</li>
                 })}
             </ul>
 
