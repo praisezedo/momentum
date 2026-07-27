@@ -1,36 +1,15 @@
+
 import { useEffect, useState} from "react"; 
 
-export default function AddGoalForm() {
-    const [goalTitle , setGoalTitle] = useState("");
-    const [goals , setGoals] = useState([] as string[]);
-    const [goalMessage , setGoalMessage] = useState("");
+type AddGoalFormProps = {
+    handleAddGoal: () => void;
+    setGoalTitle: React.Dispatch<React.SetStateAction<string>>;
+    goalTitle: string;
+    goalMessage: string;
+}
 
-    const handleAddGoal = () => {
-          
-          setGoalMessage("");
-          
-        if (goalTitle.trim() !== "") {
-            setGoals([...goals, goalTitle]);
-            setGoalTitle("");
-            setGoalMessage("Goal added successfully!");
-        }  
+export default function AddGoalForm({ handleAddGoal, setGoalTitle , goalTitle , goalMessage }: AddGoalFormProps) {
 
-        else {
-            setGoalMessage("Goal cannot be empty. Please enter a valid goal.");
-        }
-    }
-
-    useEffect(() => {
-
-        if (!goalMessage) return;
-
-        const timer = setTimeout(() => {
-            setGoalMessage("");
-        }, 3000);
-
-        return () => clearTimeout(timer);
-
-    }, [goalMessage]);
 
     return (
         <>
