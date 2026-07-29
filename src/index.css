@@ -3,3 +3,7 @@
 @utility flex-col-center {
     @apply flex justify-center items-center flex-col;
 }
+
+@utility flex-center {
+    @apply flex justify-center items-center;
+}

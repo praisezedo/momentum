@@ -29,6 +29,10 @@ import GoalList from "../components/dashboard/GoalList";
         }
     }
 
+    const handleDeleteGoal = (title: string) => {
+        setGoals(goals.filter(goal => goal !== title))
+    }
+
     useEffect(() => {
 
         if (!goalMessage) return;
@@ -47,7 +51,7 @@ import GoalList from "../components/dashboard/GoalList";
             <WelcomeCard  name={user.name}/>
             <StreakCard streak={streak} setStreak={setStreak}/>
             <AddGoalForm handleAddGoal={handleAddGoal} goalMessage={goalMessage} goalTitle={goalTitle} setGoalTitle={setGoalTitle} />
-             <GoalList goals={goals}/>
+             <GoalList goals={goals} handleDeleteGoal={handleDeleteGoal} />
           </section>
         </Layout>
 
