@@ -5,13 +5,14 @@ import Layout from "../components/layout/Layout";
 import {user} from "../data/user";
 import AddGoalForm from "../components/dashboard/AddGoalForm";
 import GoalList from "../components/dashboard/GoalList";
+import type { Goal } from "../types/goal";
  
  export default function Dashboard() {
 
   const [streak , setStreak] = useState(user.streak);
 
       const [goalTitle , setGoalTitle] = useState("");
-    const [goals , setGoals] = useState([] as string[]);
+    const [goals , setGoals] = useState([] as Goal[]);
     const [goalMessage , setGoalMessage] = useState("");
 
     const handleAddGoal = () => {
@@ -19,7 +20,7 @@ import GoalList from "../components/dashboard/GoalList";
           setGoalMessage("");
           
         if (goalTitle.trim() !== "") {
-            setGoals([...goals, goalTitle]);
+            setGoals([...goals, {id: Date.now(), title: goalTitle , iscompleted: true} ]);
             setGoalTitle("");
             setGoalMessage("Goal added successfully!");
         }  
@@ -29,8 +30,8 @@ import GoalList from "../components/dashboard/GoalList";
         }
     }
 
-    const handleDeleteGoal = (title: string) => {
-        setGoals(goals.filter(goal => goal !== title))
+    const handleDeleteGoal = (id: any) => {
+        setGoals(goals.filter(goal => goal.id !== id));
     }
 
     useEffect(() => {
