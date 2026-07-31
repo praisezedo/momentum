@@ -20,7 +20,7 @@ import type { Goal } from "../types/goal";
           setGoalMessage("");
           
         if (goalTitle.trim() !== "") {
-            setGoals([...goals, {id: Date.now(), title: goalTitle , iscompleted: true} ]);
+            setGoals([...goals, {id: Date.now(), title: goalTitle , completed: false} ]);
             setGoalTitle("");
             setGoalMessage("Goal added successfully!");
         }  
@@ -30,9 +30,24 @@ import type { Goal } from "../types/goal";
         }
     }
 
-    const handleDeleteGoal = (id: any) => {
+    const handleDeleteGoal = (id: number) => {
         setGoals(goals.filter(goal => goal.id !== id));
     }
+
+    const handleToggleGoal = (id: number) => {
+
+      setGoals(
+        goals.map((goal: Goal) => {
+
+            if (goal.id === id) {
+                return { ...goal , completed: !goal.completed};
+            } 
+
+            return goal;
+        })
+      )
+    } 
+
 
     useEffect(() => {
 
@@ -52,7 +67,7 @@ import type { Goal } from "../types/goal";
             <WelcomeCard  name={user.name}/>
             <StreakCard streak={streak} setStreak={setStreak}/>
             <AddGoalForm handleAddGoal={handleAddGoal} goalMessage={goalMessage} goalTitle={goalTitle} setGoalTitle={setGoalTitle} />
-             <GoalList goals={goals} handleDeleteGoal={handleDeleteGoal} />
+             <GoalList goals={goals} handleDeleteGoal={handleDeleteGoal} handleToggleGoal={handleToggleGoal} />
           </section>
         </Layout>
 
