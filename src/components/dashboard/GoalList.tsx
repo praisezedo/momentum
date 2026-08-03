@@ -13,7 +13,7 @@ export default function GoalList({goals , handleDeleteGoal , handleToggleGoal } 
                 (<p className="text-black text-sm">No Goals Yet.</p>) 
                 : 
                 (
-                  <ul className="grid grid-cols-3 gap-5 ">
+                  <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
                      {goals.map((goal: Goal ) => (
                     <li key={goal.id} >
                          <GoalCard goal={goal} handleDeleteGoal={handleDeleteGoal} handleToggleGoal={handleToggleGoal} />

@@ -6,7 +6,8 @@ import {user} from "../data/user";
 import AddGoalForm from "../components/dashboard/AddGoalForm";
 import GoalList from "../components/dashboard/GoalList";
 import type { Goal } from "../types/goal";
- 
+import ProgressSummary from "../components/dashboard/ProgressSummary";
+
  export default function Dashboard() {
 
   const [streak , setStreak] = useState(user.streak);
@@ -68,6 +69,7 @@ import type { Goal } from "../types/goal";
             <StreakCard streak={streak} setStreak={setStreak}/>
             <AddGoalForm handleAddGoal={handleAddGoal} goalMessage={goalMessage} goalTitle={goalTitle} setGoalTitle={setGoalTitle} />
              <GoalList goals={goals} handleDeleteGoal={handleDeleteGoal} handleToggleGoal={handleToggleGoal} />
+             <ProgressSummary goals={goals}/>
           </section>
         </Layout>
 
