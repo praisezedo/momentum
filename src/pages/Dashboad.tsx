@@ -13,7 +13,9 @@ import ProgressSummary from "../components/dashboard/ProgressSummary";
   const [streak , setStreak] = useState(user.streak);
 
       const [goalTitle , setGoalTitle] = useState("");
-    const [goals , setGoals] = useState([] as Goal[]);
+    const [goals , setGoals] = useState(() => {
+      return  JSON.parse(localStorage.getItem("goals") || "[]") as  Goal[];
+    } );
     const [goalMessage , setGoalMessage] = useState("");
 
     const handleAddGoal = () => {
@@ -61,6 +63,13 @@ import ProgressSummary from "../components/dashboard/ProgressSummary";
         return () => clearTimeout(timer);
 
     }, [goalMessage]);
+
+    useEffect(() => {
+
+        localStorage.setItem("goals", JSON.stringify(goals));
+
+    }, [goals]);
+
     return (
 
         <Layout>
