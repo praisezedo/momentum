@@ -17,4 +17,4 @@ export default function GoalCard({goal , handleDeleteGoal , handleToggleGoal }: 
          </div>
         </>
     )
-}
+}  
